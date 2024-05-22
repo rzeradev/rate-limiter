@@ -1,0 +1,13 @@
+version: '2'
+
+tasks:
+  default:
+    cmds:
+      - air
+    silent: true
+    desc: "Run the project with air"
+
+  test:
+    cmds:
+      - go test -v ./test
+    desc: "Run tests"

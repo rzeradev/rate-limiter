@@ -1,0 +1,14 @@
+root = "."
+tmp_dir = "tmp"
+[build]
+  bin = "bin/main"
+  cmd = "go build -o bin/main cmd/server/main.go"
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  exclude_dir = ["assets", "tmp", "bin", "vendor"]
+  exclude_file = ["README.md"]
+  delay = 2000
+  log = "air.log"
+  [build.env]
+    GO_ENV = "development"
+[log]
+  log = "air.log"
