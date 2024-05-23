@@ -3,6 +3,7 @@ package configs
 import (
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"github.com/joho/godotenv"
@@ -21,11 +22,16 @@ type Config struct {
 var AppConfig Config
 
 func LoadConfig(path *string) {
+	pwd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
 	defaultPath := ".env"
 	if path == nil {
 		path = &defaultPath
 	}
-	err := godotenv.Load(*path)
+	println(pwd, *path)
+	err = godotenv.Load(filepath.Join(pwd, *path))
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}

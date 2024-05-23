@@ -12,7 +12,7 @@ import (
 )
 
 func TestRateLimiter(t *testing.T) {
-	envPath := "./../.env"
+	envPath := "/../.env"
 	configs.LoadConfig(&envPath)
 
 	app := fiber.New()

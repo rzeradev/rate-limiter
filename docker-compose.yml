@@ -7,6 +7,27 @@ services:
       - "6379:6379"
     networks:
       - backend
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    environment:
+      - REDIS_ADDR=redis:6379
+      - REDIS_PASS=
+      - REDIS_DB=0
+      - IP_MAX_REQ=5
+      - TOKEN_MAX_REQ=10
+      - BLOCK_TIME=60
+      - RATE_LIMIT_DUR=second # Can be 'second' or 'minute'
+    networks:
+      - backend
 
 networks:
   backend:
+    driver: bridge

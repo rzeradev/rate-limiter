@@ -62,41 +62,29 @@ Este projeto implementa um rate limiter em Go que pode ser configurado para limi
    # Modifique o arquivo .env como necessário
    ```
 
-3. **Inicie o servidor Redis com Docker Compose**
+3. **Inicie o servidor Redis e Servidor Go com Docker Compose**
 
    ```sh
    docker-compose up -d
    ```
 
-4. **Execute o projeto**
+4. **O servidor vai rodar no endereço `http://localhost:8080`**
+
+5. **Faça requisições http para a URL do servidor usando um HTTP Client como Postman ou Insomnia Ou até mesmo cURL**
+
+   Exemplo cURL com Header
 
    ```sh
-   task
+   curl --request GET \
+   --url http://localhost:8080/ \
+   --header 'API_KEY: abc123'
    ```
-
-   ou
-
-   ```sh
-   air
-   ```
-
-   ou
-
-   ```sh
-    go run ./cmd/server/main.go
-   ```
-
-5. **O servidor vai rodar no endereço `http://localhost:8080`**
 
 ### Rodando os testes
 
 1. **Execute os testes**
    ```sh
-   task test
-   ```
-   ou
-   ```sh
-   go test -v ./test
+   docker compose exec app go test -v ./test
    ```
 
 ## Configuração
